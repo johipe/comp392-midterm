@@ -41,10 +41,37 @@ var game = (() => {
     var control: Control;
     var gui: GUI;
     var stats: Stats;
+    
+    var axes: AxisHelper;
+    
+var cubeOnecubeGeometry: CubeGeometry;
+var cubeTwocubeGeometry: CubeGeometry;
+var cubeThreecubeGeometry: CubeGeometry;
+var cubeFourcubeGeometry: CubeGeometry;
+var cubeFivecubeGeometry: CubeGeometry;
+
+var cubeOnecubeMaterial: LambertMaterial;
+var cubeTwocubeMaterial: LambertMaterial;
+var cubeThreecubeMaterial: LambertMaterial;
+var cubeFourcubeMaterial: LambertMaterial;
+var cubeFivecubeMaterial: LambertMaterial;
+
+var cubeOne:Mesh;
+var ubeTwo:Mesh;
+var cubeThree:Mesh;
+var cubeFour:Mesh;
+var cubeFive:Mesh;
+
+var planeMaterial: LambertMaterial;
+var planeGeometry: PlaneGeometry;
+var plane: Mesh;
+
+var ambientLight: AmbientLight;
+var spotLight: SpotLight;
 
     function init() {
         // Instantiate a new Scene object
-        //scene = new Scene();
+        scene = new Scene();
         
         setupRenderer(); // setup the default renderer
 	
@@ -52,7 +79,35 @@ var game = (() => {
 
 
         /* ENTER CODE HERE */
-        
+         axes = new AxisHelper(15);
+         scene.add(axes);
+         console.log("Added Axis Helper to scene...");
+ 
+     //Add a Plane to the Scene
+ 	planeGeometry = new PlaneGeometry(60,30);
+	planeMaterial = new LambertMaterial({color:0xFFFFFF});
+	plane = new Mesh(planeGeometry, planeMaterial);
+	plane.receiveShadow = true;
+	
+	plane.rotation.x = -0.5 * Math.PI;
+    plane.position.x = 15;
+	plane.position.y = 0;
+    plane.position.z = 0;
+
+    scene.add(plane);
+    console.log("Added Plane Primitive to scene...");
+    
+        // Add an AmbientLight to the scene
+    ambientLight = new AmbientLight(0x090909);
+    scene.add(ambientLight);
+    console.log("Added an Ambient Light to Scene");
+	
+    // Add a SpotLight to the scene
+    spotLight = new SpotLight(0xffffff);
+    spotLight.position.set(-40, 60, -10);
+    spotLight.castShadow = true;
+    scene.add(spotLight);
+    console.log("Added a SpotLight Light to Scene");
  
         // add controls
         gui = new GUI();

@@ -36,12 +36,57 @@ var game = (function () {
     var control;
     var gui;
     var stats;
+    var axes;
+    var cubeOnecubeGeometry;
+    var cubeTwocubeGeometry;
+    var cubeThreecubeGeometry;
+    var cubeFourcubeGeometry;
+    var cubeFivecubeGeometry;
+    var cubeOnecubeMaterial;
+    var cubeTwocubeMaterial;
+    var cubeThreecubeMaterial;
+    var cubeFourcubeMaterial;
+    var cubeFivecubeMaterial;
+    var cubeOne;
+    var ubeTwo;
+    var cubeThree;
+    var cubeFour;
+    var cubeFive;
+    var planeMaterial;
+    var planeGeometry;
+    var plane;
+    var ambientLight;
+    var spotLight;
     function init() {
         // Instantiate a new Scene object
-        //scene = new Scene();
+        scene = new Scene();
         setupRenderer(); // setup the default renderer
         setupCamera(); // setup the camera
         /* ENTER CODE HERE */
+        axes = new AxisHelper(15);
+        scene.add(axes);
+        console.log("Added Axis Helper to scene...");
+        //Add a Plane to the Scene
+        planeGeometry = new PlaneGeometry(60, 30);
+        planeMaterial = new LambertMaterial({ color: 0xFFFFFF });
+        plane = new Mesh(planeGeometry, planeMaterial);
+        plane.receiveShadow = true;
+        plane.rotation.x = -0.5 * Math.PI;
+        plane.position.x = 15;
+        plane.position.y = 0;
+        plane.position.z = 0;
+        scene.add(plane);
+        console.log("Added Plane Primitive to scene...");
+        // Add an AmbientLight to the scene
+        ambientLight = new AmbientLight(0x090909);
+        scene.add(ambientLight);
+        console.log("Added an Ambient Light to Scene");
+        // Add a SpotLight to the scene
+        spotLight = new SpotLight(0xffffff);
+        spotLight.position.set(-40, 60, -10);
+        spotLight.castShadow = true;
+        scene.add(spotLight);
+        console.log("Added a SpotLight Light to Scene");
         // add controls
         gui = new GUI();
         control = new Control();
