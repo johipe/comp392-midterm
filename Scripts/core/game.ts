@@ -1,4 +1,8 @@
-/// <reference path="_reference.ts"/>
+1 //Source File: Game.ts 
+2 //Author: Johanna Ponce
+3 //Last Modified Date: march, 02, 2016 
+4 //Last Modified by: Johanna Ponce
+5 //Main scene setup and controller for the tower - COMP392 - Mid Term
 
 // MAIN GAME FILE
 

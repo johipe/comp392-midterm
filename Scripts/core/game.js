@@ -1,4 +1,8 @@
-/// <reference path="_reference.ts"/>
+1; //Source File: Game.ts 
+2; //Author: Johanna Ponce
+3; //Last Modified Date: march, 02, 2016 
+4; //Last Modified by: Johanna Ponce
+5; //Main scene setup and controller for the tower - COMP392 - Mid Term
 // MAIN GAME FILE
 // THREEJS Aliases
 var Scene = THREE.Scene;
@@ -100,6 +104,7 @@ var game = (function () {
         console.log("Added a SpotLight Light to Scene2");
         //Random Color fot CubeOne
         //colorcubeOne = '#' + Math.random().toString(16).substring(2, 8);
+        //Add CubeOne to the scene
         cubeOnecubeGeometry = new CubeGeometry(14, 4, 14);
         //cubeOnecubeMaterial = new LambertMaterial({color:0xeeb2f7});
         cubeOnecubeMaterial = new LambertMaterial({ color: colorcubeOne });
@@ -109,6 +114,7 @@ var game = (function () {
         cubeOne.position.set(0, 0, 0);
         scene.add(cubeOne);
         console.log("Added cubeOne to the scene");
+        //Add CubeTwo to the scene
         cubeTwocubeGeometry = new CubeGeometry(10, 2, 10);
         //cubeTwocubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
         cubeTwocubeMaterial = new LambertMaterial({ color: colorcubeTwo });
@@ -118,6 +124,7 @@ var game = (function () {
         cubeTwo.position.set(0, 4, 0);
         scene.add(cubeTwo);
         console.log("Added cubeTwo to the scene");
+        //Add CubeThree to the scene
         cubeThreecubeGeometry = new CubeGeometry(8, 2, 8);
         //cubeThreecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
         cubeThreecubeMaterial = new LambertMaterial({ color: colorcubeThree });
@@ -127,6 +134,7 @@ var game = (function () {
         cubeThree.position.set(0, 6, 0);
         scene.add(cubeThree);
         console.log("Added cubeThree to the scene");
+        //Add CubeFour to the scene
         cubeFourcubeGeometry = new CubeGeometry(6, 2, 6);
         //cubeFourcubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
         cubeFourcubeMaterial = new LambertMaterial({ color: colorcubeFour });
@@ -136,6 +144,7 @@ var game = (function () {
         cubeFour.position.set(0, 8, 0);
         scene.add(cubeFour);
         console.log("Added cubeFour to the scene");
+        //Add CubeFive to the scene
         cubeFivecubeGeometry = new CubeGeometry(4, 2, 4);
         //cubeFivecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
         cubeFivecubeMaterial = new LambertMaterial({ color: colorcubeFive });
@@ -206,6 +215,7 @@ var game = (function () {
         camera.lookAt(new Vector3(0, 0, 0));
         console.log("Finished setting up Camera...");
     }
+    //Generate random colors for the cube objects
     function generateRandomColors() {
         colorcubeOne = '#' + Math.random().toString(16).substring(2, 8);
         colorcubeTwo = '#' + Math.random().toString(16).substring(2, 8);

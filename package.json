@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CentennialCollege/COMP392-MidTerm.git"
+    "url": "https://github.com/johipe/comp392-midterm"
   },
-  "author": "Tom Tsiliopoulos",
+  "author": "Johanna Ponce",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CentennialCollege/COMP392-MidTerm/issues"
+    "url": "https://github.com/johipe/comp392-midterm"
   },
-  "homepage": "https://github.com/CentennialCollege/COMP392-MidTerm#readme"
+  "homepage": "https://github.com/johipe/comp392-midterm"
 }

@@ -1,3 +1,9 @@
+1 //Source File: Control.ts 
+2 //Author: Johanna Ponce
+3 //Last Modified Date: March, 02, 2016 
+4 //Last Modified by: Johanna Ponce
+5 //GUI Controller for the Tower
+
 /// <reference path="../../typings/tsd.d.ts"/>
 
 module objects {
