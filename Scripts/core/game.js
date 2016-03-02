@@ -48,7 +48,7 @@ var game = (function () {
     var cubeFourcubeMaterial;
     var cubeFivecubeMaterial;
     var cubeOne;
-    var ubeTwo;
+    var cubeTwo;
     var cubeThree;
     var cubeFour;
     var cubeFive;
@@ -57,6 +57,7 @@ var game = (function () {
     var plane;
     var ambientLight;
     var spotLight;
+    var colorcubeOne;
     function init() {
         // Instantiate a new Scene object
         scene = new Scene();
@@ -82,22 +83,60 @@ var game = (function () {
         scene.add(ambientLight);
         console.log("Added an Ambient Light to Scene");
         // Add a SpotLight to the scene
-        spotLight = new SpotLight(0xffffff);
-        spotLight.position.set(-40, 60, -10);
+        spotLight = new SpotLight(0xfcfcfc);
+        camera.position.x = 15.3;
+        camera.position.y = 28.5;
+        camera.position.z = -28.7;
+        // spotLight.position.set(40, 20, 10);
+        spotLight.position.set(15, 28, -28.7);
         spotLight.castShadow = true;
         scene.add(spotLight);
-        console.log("Added a SpotLight Light to Scene");
-        cubeOnecubeGeometry = new CubeGeometry(8, 4, 8);
-        cubeOnecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        console.log("Added a SpotLight Light to Scene2");
+        colorcubeOne = '#' + Math.random().toString(16).substring(2, 8);
+        cubeOnecubeGeometry = new CubeGeometry(14, 4, 14);
+        //cubeOnecubeMaterial = new LambertMaterial({color:0xeeb2f7});
+        cubeOnecubeMaterial = new LambertMaterial({ color: colorcubeOne });
         cubeOne = new Mesh(cubeOnecubeGeometry, cubeOnecubeMaterial);
         cubeOne.castShadow = true;
         cubeOne.receiveShadow = true;
         cubeOne.position.set(0, 0, 0);
         scene.add(cubeOne);
         console.log("Added cubeOne to the scene");
+        cubeTwocubeGeometry = new CubeGeometry(10, 2, 10);
+        cubeTwocubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        cubeTwo = new Mesh(cubeTwocubeGeometry, cubeTwocubeMaterial);
+        cubeTwo.castShadow = true;
+        cubeTwo.receiveShadow = true;
+        cubeTwo.position.set(0, 4, 0);
+        scene.add(cubeTwo);
+        console.log("Added cubeTwo to the scene");
+        cubeThreecubeGeometry = new CubeGeometry(8, 2, 8);
+        cubeThreecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        cubeThree = new Mesh(cubeThreecubeGeometry, cubeThreecubeMaterial);
+        cubeThree.castShadow = true;
+        cubeThree.receiveShadow = true;
+        cubeThree.position.set(0, 6, 0);
+        scene.add(cubeThree);
+        console.log("Added cubeThree to the scene");
+        cubeFourcubeGeometry = new CubeGeometry(6, 2, 6);
+        cubeFourcubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        cubeFour = new Mesh(cubeFourcubeGeometry, cubeFourcubeMaterial);
+        cubeFour.castShadow = true;
+        cubeFour.receiveShadow = true;
+        cubeFour.position.set(0, 8, 0);
+        scene.add(cubeFour);
+        console.log("Added cubeFour to the scene");
+        cubeFivecubeGeometry = new CubeGeometry(4, 2, 4);
+        cubeFivecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        cubeFive = new Mesh(cubeFivecubeGeometry, cubeFivecubeMaterial);
+        cubeFive.castShadow = true;
+        cubeFive.receiveShadow = true;
+        cubeFive.position.set(0, 10, 0);
+        scene.add(cubeFive);
+        console.log("Added cubeFive to the scene");
         // add controls
         gui = new GUI();
-        control = new Control();
+        control = new Control(0, 0, 0, 0, 0);
         addControl(control);
         // Add framerate stats
         addStatsObject();
@@ -107,6 +146,14 @@ var game = (function () {
     }
     function addControl(controlObject) {
         /* ENTER CODE for the GUI CONTROL HERE */
+        var rotationFolder = gui.addFolder('Rotation Control');
+        rotationFolder.add(controlObject, 'cubeOne_rotationSpeed', 0, 0.5).listen();
+        rotationFolder.add(controlObject, 'cubeTwo_rotationSpeed', 0, 0.5).listen();
+        rotationFolder.add(controlObject, 'cubeThree_rotationSpeed', 0, 0.5).listen();
+        rotationFolder.add(controlObject, 'cubeFour_rotationSpeed', 0, 0.5).listen();
+        rotationFolder.add(controlObject, 'cubeFive_rotationSpeed', 0, 0.5).listen();
+        // rotationFolder.add(controlObject, 'resetRotation').name('Reset ');
+        rotationFolder.open();
     }
     function addStatsObject() {
         stats = new Stats();
@@ -119,6 +166,11 @@ var game = (function () {
     // Setup main game loop
     function gameLoop() {
         stats.update();
+        cubeOne.rotation.y += control.cubeOne_rotationSpeed;
+        cubeTwo.rotation.y += control.cubeTwo_rotationSpeed;
+        cubeThree.rotation.y += control.cubeThree_rotationSpeed;
+        cubeFour.rotation.y += control.cubeFour_rotationSpeed;
+        cubeFive.rotation.y += control.cubeFive_rotationSpeed;
         // render using requestAnimationFrame
         requestAnimationFrame(gameLoop);
         // render the scene
@@ -137,7 +189,7 @@ var game = (function () {
     function setupCamera() {
         camera = new PerspectiveCamera(35, config.Screen.RATIO, 0.1, 100);
         camera.position.x = 15.3;
-        camera.position.y = 18.5;
+        camera.position.y = 28.5;
         camera.position.z = -28.7;
         camera.rotation.set(-1.10305, 0.49742, -0.1396);
         camera.lookAt(new Vector3(0, 0, 0));
