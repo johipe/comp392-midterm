@@ -58,12 +58,17 @@ var game = (function () {
     var ambientLight;
     var spotLight;
     var colorcubeOne;
+    var colorcubeTwo;
+    var colorcubeThree;
+    var colorcubeFour;
+    var colorcubeFive;
     function init() {
         // Instantiate a new Scene object
         scene = new Scene();
         setupRenderer(); // setup the default renderer
         setupCamera(); // setup the camera
         /* ENTER CODE HERE */
+        generateRandomColors();
         axes = new AxisHelper(15);
         scene.add(axes);
         console.log("Added Axis Helper to scene...");
@@ -72,6 +77,7 @@ var game = (function () {
         planeMaterial = new LambertMaterial({ color: 0xFFFFFF });
         plane = new Mesh(planeGeometry, planeMaterial);
         plane.receiveShadow = true;
+        plane.castShadow = true;
         plane.rotation.x = -0.5 * Math.PI;
         plane.position.x = 15;
         plane.position.y = 0;
@@ -92,7 +98,8 @@ var game = (function () {
         spotLight.castShadow = true;
         scene.add(spotLight);
         console.log("Added a SpotLight Light to Scene2");
-        colorcubeOne = '#' + Math.random().toString(16).substring(2, 8);
+        //Random Color fot CubeOne
+        //colorcubeOne = '#' + Math.random().toString(16).substring(2, 8);
         cubeOnecubeGeometry = new CubeGeometry(14, 4, 14);
         //cubeOnecubeMaterial = new LambertMaterial({color:0xeeb2f7});
         cubeOnecubeMaterial = new LambertMaterial({ color: colorcubeOne });
@@ -103,7 +110,8 @@ var game = (function () {
         scene.add(cubeOne);
         console.log("Added cubeOne to the scene");
         cubeTwocubeGeometry = new CubeGeometry(10, 2, 10);
-        cubeTwocubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        //cubeTwocubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        cubeTwocubeMaterial = new LambertMaterial({ color: colorcubeTwo });
         cubeTwo = new Mesh(cubeTwocubeGeometry, cubeTwocubeMaterial);
         cubeTwo.castShadow = true;
         cubeTwo.receiveShadow = true;
@@ -111,7 +119,8 @@ var game = (function () {
         scene.add(cubeTwo);
         console.log("Added cubeTwo to the scene");
         cubeThreecubeGeometry = new CubeGeometry(8, 2, 8);
-        cubeThreecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        //cubeThreecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        cubeThreecubeMaterial = new LambertMaterial({ color: colorcubeThree });
         cubeThree = new Mesh(cubeThreecubeGeometry, cubeThreecubeMaterial);
         cubeThree.castShadow = true;
         cubeThree.receiveShadow = true;
@@ -119,7 +128,8 @@ var game = (function () {
         scene.add(cubeThree);
         console.log("Added cubeThree to the scene");
         cubeFourcubeGeometry = new CubeGeometry(6, 2, 6);
-        cubeFourcubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        //cubeFourcubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        cubeFourcubeMaterial = new LambertMaterial({ color: colorcubeFour });
         cubeFour = new Mesh(cubeFourcubeGeometry, cubeFourcubeMaterial);
         cubeFour.castShadow = true;
         cubeFour.receiveShadow = true;
@@ -127,7 +137,8 @@ var game = (function () {
         scene.add(cubeFour);
         console.log("Added cubeFour to the scene");
         cubeFivecubeGeometry = new CubeGeometry(4, 2, 4);
-        cubeFivecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        //cubeFivecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        cubeFivecubeMaterial = new LambertMaterial({ color: colorcubeFive });
         cubeFive = new Mesh(cubeFivecubeGeometry, cubeFivecubeMaterial);
         cubeFive.castShadow = true;
         cubeFive.receiveShadow = true;
@@ -194,6 +205,14 @@ var game = (function () {
         camera.rotation.set(-1.10305, 0.49742, -0.1396);
         camera.lookAt(new Vector3(0, 0, 0));
         console.log("Finished setting up Camera...");
+    }
+    function generateRandomColors() {
+        colorcubeOne = '#' + Math.random().toString(16).substring(2, 8);
+        colorcubeTwo = '#' + Math.random().toString(16).substring(2, 8);
+        colorcubeThree = '#' + Math.random().toString(16).substring(2, 8);
+        colorcubeFour = '#' + Math.random().toString(16).substring(2, 8);
+        colorcubeFive = '#' + Math.random().toString(16).substring(2, 8);
+        console.log("Random Colors generated...");
     }
     window.onload = init;
     return {
