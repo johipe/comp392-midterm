@@ -87,6 +87,14 @@ var game = (function () {
         spotLight.castShadow = true;
         scene.add(spotLight);
         console.log("Added a SpotLight Light to Scene");
+        cubeOnecubeGeometry = new CubeGeometry(8, 4, 8);
+        cubeOnecubeMaterial = new LambertMaterial({ color: 0xeeb2f7 });
+        cubeOne = new Mesh(cubeOnecubeGeometry, cubeOnecubeMaterial);
+        cubeOne.castShadow = true;
+        cubeOne.receiveShadow = true;
+        cubeOne.position.set(0, 0, 0);
+        scene.add(cubeOne);
+        console.log("Added cubeOne to the scene");
         // add controls
         gui = new GUI();
         control = new Control();
